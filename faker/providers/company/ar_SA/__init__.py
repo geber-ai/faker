@@ -3,11 +3,11 @@ from .. import Provider as CompanyProvider
 
 class Provider(CompanyProvider):
     formats = (
-        "{{company_suffix}} {{company_name}} {{company_suffix}}",
-        "{{company_suffix}} {{last_name}} {{company_suffix}}",
+        "{{company_prefix}} {{company_domain}} {{company_suffix}}",
+        "{{company_prefix}} {{last_name}} {{company_suffix}}",
     )
 
-    company_prefix = (
+    company_prefixes = (
         "أكاديمية",
         "شركة",
         "عيادات",
@@ -24,7 +24,7 @@ class Provider(CompanyProvider):
         "منصة",
     )
 
-    company_domain = (
+    company_domains = (
     "الأغذية",
     "الاتصالات",
     "الاستثمار",
@@ -57,3 +57,8 @@ class Provider(CompanyProvider):
         "المتقدمة",
         "الخليجية",
     )
+    def company_prefix(self) -> str:
+        return self.random_element(self.company_prefixes)
+    
+    def company_domain(self) -> str:
+        return self.random_element(self.company_domains)
