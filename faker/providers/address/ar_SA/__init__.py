@@ -11,11 +11,14 @@ class Provider(AddressProvider):
 
     address_formats = (
         "{{building_number}}, {{street_name}}, {{secondary_number}}, {{district}}, {{postcode}}, {{city_name}}",
-        "{{shorthand}}{{building_number}}",
         #"{{building_number}}, {{street_name}}"
         #"{{secondary_number}}, {{district}}"
         #"{{postal_code}} "
         #"{{city}}",
+    )
+
+    short_address_formats = (
+        "{{shorthand}}{{building_number}}",
     )
     
     cities = [
@@ -2087,6 +2090,13 @@ class Provider(AddressProvider):
         return self.random_element(self.districts)
 
     def shorthand(self) -> str:
-        return self.lexify(self.random_element(self.shorthand_formats))
+        return self.lexify(self.random_element(self.shorthand_formats)).upper()
+    
+    def short_address(self) -> str:
+        """
+        :example: '791 Crist Parks, Sashabury, IL 86039-9874'
+        """
+        pattern: str = self.random_element(self.short_address_formats)
+        return self.generator.parse(pattern)
 
     
