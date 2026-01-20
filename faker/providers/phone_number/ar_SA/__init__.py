@@ -22,16 +22,6 @@ class Provider(PhoneNumberProvider):
         "800### ####",
     )
 
-    #services_phones_formats = (
-    #    "999",
-    #    "901",
-    #    "998",
-    #    "997",
-    #    "996",
-    #    "991",
-    #    "922",
-    #)
-
     formats = cellphone_formats + telephone_formats + toll_formats
 
     def cellphone_provider_code(self) -> str:
@@ -74,10 +64,6 @@ class Provider(PhoneNumberProvider):
     def telephone_number(self) -> str:
         pattern: str = self.random_element(self.telephone_formats)
         return self.numerify(self.generator.parse(pattern))
-
-    #def service_phone_number(self) -> str:
-    #    pattern: str = self.random_element(self.services_phones_formats)
-    #    return self.numerify(self.generator.parse(pattern))
 
     def toll_number(self) -> str:
         pattern: str = self.random_element(self.toll_formats)
