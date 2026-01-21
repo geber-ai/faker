@@ -6,7 +6,7 @@ class Provider(ArabicPersonProvider):
         "{{last_name}}",
         " {{last_name_prefix}} {{first_name}}"
     )
-    first_name_female = (
+    first_names_female = (
         "آبانوس",
         "آبينوس",
         "آتاناز",
@@ -1279,7 +1279,7 @@ class Provider(ArabicPersonProvider):
         "زرينه",
     )
 
-    first_name_male = (
+    first_names_male = (
         "آبانوس",
         "آبينوس",
         "آتا",
