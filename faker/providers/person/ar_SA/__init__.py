@@ -1,12 +1,19 @@
-from ..ar_AA import Provider as ArabicPersonProvider
+from typing import Tuple
 
+from .. import Provider as PersonProvider
 
-class Provider(ArabicPersonProvider):
+class Provider(PersonProvider):
+    formats_female: Tuple[str, ...] = ("{{first_name_female}} {{last_name}}",)
+
+    formats_male: Tuple[str, ...] = ("{{first_name_male}} {{last_name}}",)
+
+    formats = formats_male + formats_female
+
     last_name_formats = (
         "{{last_name}}",
         " {{last_name_prefix}} {{first_name}}"
     )
-    first_names_female = (
+    first_names_female: Tuple[str, ...] =(
         "آبانوس",
         "آبينوس",
         "آتاناز",
@@ -1279,7 +1286,7 @@ class Provider(ArabicPersonProvider):
         "زرينه",
     )
 
-    first_names_male = (
+    first_names_male: Tuple[str, ...] = (
         "آبانوس",
         "آبينوس",
         "آتا",
@@ -2517,7 +2524,9 @@ class Provider(ArabicPersonProvider):
         "يونس",
     )
 
-    last_names = (
+    first_names = first_names_male + first_names_female
+
+    last_names: Tuple[str, ...] = (
         "آل الشيخ",
         "آل العسكري",
         "آل بن ظافر",
@@ -2613,7 +2622,7 @@ class Provider(ArabicPersonProvider):
         "ياسين",
     )
 
-    last_name_prefixes = (
+    last_name_prefixes: Tuple[str, ...] = (
         "آل",
         "أبو",
         "بن",
